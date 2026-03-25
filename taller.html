@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Toapanta Hnos | Taller Mecánico Profesional Quito</title>
+  <meta name="description" content="Taller mecánico profesional en Quito. Diagnóstico computarizado, hojalatería, pintura y mecánica general. +15 años de experiencia. Diagnóstico GRATIS.">
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0C15;
+      color: #F1F5F9;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #E85D04;
+      --primary-dark: #D94804;
+      --primary-glow: 0 0 12px rgba(232, 93, 4, 0.7);
+      --dark-bg: #0A0C15;
+      --card-bg: #11151F;
+      --gray-light: #E2E8F0;
+      --gray-mid: #94A3B8;
+      --white: #FFFFFF;
+      --whatsapp: #25D366;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Botones con degradado */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(232, 93, 4, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--primary-glow);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--primary-glow);
+    }
+
+    /* Header simplificado: solo logo y botón diagnóstico (sin menú hamburguesa) */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 12, 21, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(232, 93, 4, 0.4);
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), #FFB347);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: var(--gray-mid);
+    }
+    
+    /* Menú móvil flotante inferior (iconos + texto) - única navegación en móvil */
+    .bottom-nav-mobile {
+      position: fixed;
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+      background: linear-gradient(145deg, rgba(17,21,31,0.96), rgba(10,12,21,0.98));
+      backdrop-filter: blur(20px);
+      border-radius: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 16px;
+      z-index: 1001;
+      border: 1px solid rgba(232,93,4,0.4);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .bottom-nav-mobile a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .bottom-nav-mobile a i {
+      font-size: 1.3rem;
+    }
+    .bottom-nav-mobile a:hover, .bottom-nav-mobile a.active {
+      color: var(--primary);
+      background: rgba(232,93,4,0.15);
+    }
+    .bottom-nav-mobile .cita-mobile-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 8px 16px;
+      border-radius: 40px;
+      flex-direction: row;
+      gap: 8px;
+    }
+    .bottom-nav-mobile .cita-mobile-btn i {
+      font-size: 1rem;
+    }
+    .bottom-nav-mobile .cita-mobile-btn span {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    @media (min-width: 992px) {
+      .bottom-nav-mobile {
+        display: none;
+      }
+    }
+
+    /* MENÚ FLOTANTE DESKTOP (lateral derecho) */
+    .floating-menu {
+      position: fixed;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: linear-gradient(145deg, rgba(17, 21, 31, 0.9), rgba(10, 12, 21, 0.95));
+      backdrop-filter: blur(12px);
+      padding: 16px 12px;
+      border-radius: 60px;
+      border: 1px solid rgba(232, 93, 4, 0.5);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .floating-menu a {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(232, 93, 4, 0.2), rgba(232, 93, 4, 0.05));
+      color: var(--gray-light);
+      font-size: 1.4rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      position: relative;
+    }
+    .floating-menu a:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 0 12px rgba(232,93,4,0.8);
+    }
+    .floating-menu a span.tooltip {
+      position: absolute;
+      right: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      pointer-events: none;
+    }
+    .floating-menu a:hover span.tooltip {
+      opacity: 1;
+      visibility: visible;
+      right: 55px;
+    }
+    
+    @media (max-width: 991px) {
+      .floating-menu {
+        display: none;
+      }
+    }
+
+    /* WhatsApp flotante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: linear-gradient(135deg, #25D366, #20b859);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      z-index: 1000;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: 0.2s;
+      animation: pulse-wa 1.8s infinite;
+    }
+    @media (min-width: 992px) {
+      .whatsapp-float { bottom: 28px; right: 28px; width: 60px; height: 60px; font-size: 32px; }
+    }
+    @keyframes pulse-wa {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); transform: scale(1);}
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); transform: scale(1.05);}
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1);}
+    }
+    .whatsapp-float:hover { transform: scale(1.1); animation: none; }
+
+    /* Hero con imagen de fondo y degradado */
+    .hero {
+      position: relative;
+      padding: 100px 0 80px;
+      background-image: url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?q=80&w=2070&auto=format');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(10,12,21,0.85) 0%, rgba(17,21,31,0.9) 100%);
+      z-index: 1;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero h1 span { background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .badge-years {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(232,93,4,0.2), rgba(232,93,4,0.05));
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border-left: 3px solid var(--primary);
+      backdrop-filter: blur(4px);
+    }
+    .stats-hero {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-item h3 { font-size: 2rem; background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .hero-card {
+      background: linear-gradient(145deg, rgba(17,21,31,0.8), rgba(10,12,21,0.85));
+      border-radius: 32px;
+      padding: 32px;
+      text-align: center;
+      border: 1px solid rgba(232,93,4,0.4);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Servicios */
+    .section-title {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-title h2 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .service-card {
+      background: linear-gradient(145deg, var(--card-bg), #0F1320);
+      border-radius: 28px;
+      padding: 36px 28px;
+      transition: all 0.3s;
+      border: 1px solid rgba(232,93,4,0.2);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+    }
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(232,93,4,0.2), rgba(232,93,4,0.05));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .service-icon i { font-size: 2.2rem; color: var(--primary);}
+
+    /* Carrusel marcas sin puntos - con espaciado mejorado en pantallas grandes */
+    .brands-carousel-section {
+      background: linear-gradient(120deg, #0F111A, #0A0C15);
+      padding: 60px 0;
+      margin: 20px 0;
+    }
+    .brand-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 20px;
+      background: linear-gradient(145deg, rgba(17,21,31,0.6), rgba(10,12,21,0.8));
+      border-radius: 40px;
+      border: 1px solid rgba(232,93,4,0.3);
+      transition: all 0.3s;
+    }
+    .brand-slide:hover {
+      border-color: var(--primary);
+      transform: scale(1.03);
+    }
+    .brand-icon { font-size: 3rem; color: var(--primary); }
+    .brand-name { font-weight: 600; font-size: 1rem; }
+    .brands-swiper {
+      padding: 20px 10px;
+    }
+    /* Ocultar todos los puntos de paginación */
+    .brands-swiper .swiper-pagination,
+    .testimonials-swiper .swiper-pagination {
+      display: none;
+    }
+    /* Espaciado mejorado para carrusel en pantallas grandes */
+    @media (min-width: 1024px) {
+      .brands-swiper {
+        padding: 20px 30px;
+      }
+      .brands-swiper .swiper-slide {
+        padding: 0 12px;
+      }
+      .testimonials-swiper {
+        padding: 0 20px;
+      }
+      .testimonials-swiper .swiper-slide {
+        padding: 0 16px;
+      }
+    }
+
+    /* Años */
+    .years-optimized {
+      background: linear-gradient(135deg, rgba(17,21,31,0.8), rgba(10,12,21,0.9));
+      border-radius: 40px;
+      padding: 32px 28px;
+      margin: 40px 0;
+      text-align: center;
+      border: 1px solid rgba(232,93,4,0.3);
+    }
+    .years-range {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .year-block {
+      background: linear-gradient(135deg, rgba(232,93,4,0.2), rgba(232,93,4,0.05));
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+    .year-badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .year-badge {
+      background: rgba(232,93,4,0.12);
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+    }
+
+    /* Testimonios - sin puntos de paginación */
+    .testimonials-swiper {
+      margin-top: 40px;
+    }
+    .testimonial-card {
+      background: linear-gradient(145deg, var(--card-bg), #0F1320);
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid rgba(232,93,4,0.2);
+      transition: all 0.3s;
+      height: 100%;
+    }
+    .testimonial-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 12px 28px rgba(232,93,4,0.2);
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .avatar-letter {
+      width: 54px;
+      height: 54px;
+      background: linear-gradient(145deg, var(--primary), #B23C00);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    /* Contacto */
+    .contact-section {
+      background: linear-gradient(120deg, #0F111A, #0A0C15);
+      padding: 80px 0;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      background: linear-gradient(145deg, var(--card-bg), #0F1320);
+      border-radius: 48px;
+      padding: 48px;
+      border: 1px solid rgba(232,93,4,0.3);
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: #0A0C15;
+      border: 1px solid rgba(232,93,4,0.4);
+      padding: 14px 18px;
+      border-radius: 24px;
+      color: white;
+      margin-bottom: 16px;
+      font-family: inherit;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(232,93,4,0.4);
+    }
+    .info-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .info-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(232,93,4,0.2), rgba(232,93,4,0.05));
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .map-responsive {
+      margin-top: 32px;
+      border-radius: 32px;
+      overflow: hidden;
+      height: 260px;
+    }
+    iframe { width: 100%; height: 100%; border: 0; }
+    .cta-block {
+      background: linear-gradient(115deg, var(--primary), var(--primary-dark));
+      border-radius: 48px;
+      padding: 56px 32px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.3rem; }
+      .hero { padding: 60px 0 50px; background-attachment: scroll; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .section-title h2 { font-size: 1.8rem; }
+      .contact-grid { padding: 28px; }
+    }
+    footer {
+      background: #07090f;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-flex">
+      <div class="logo">
+        <h1>TOAPANTA HNOS</h1>
+        <p>Tecnología Automotriz Profesional</p>
+      </div>
+      <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Diagnóstico GRATIS</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENÚ FLOTANTE DESKTOP (lateral) -->
+<div class="floating-menu">
+  <a href="#inicio"><i class="fas fa-home"></i><span class="tooltip">Inicio</span></a>
+  <a href="#servicios"><i class="fas fa-tools"></i><span class="tooltip">Servicios</span></a>
+  <a href="#marcas"><i class="fas fa-car"></i><span class="tooltip">Marcas</span></a>
+  <a href="#testimonios"><i class="fas fa-star"></i><span class="tooltip">Testimonios</span></a>
+  <a href="#contacto"><i class="fas fa-envelope"></i><span class="tooltip">Contacto</span></a>
+</div>
+
+<!-- BOTTOM NAV MÓVIL (única navegación en móvil) -->
+<div class="bottom-nav-mobile">
+  <a href="#inicio"><i class="fas fa-home"></i><span>Inicio</span></a>
+  <a href="#servicios"><i class="fas fa-tools"></i><span>Servicios</span></a>
+  <a href="#marcas"><i class="fas fa-car"></i><span>Marcas</span></a>
+  <a href="#testimonios"><i class="fas fa-star"></i><span>Testimonios</span></a>
+  <a href="#contacto" class="cita-mobile-btn"><i class="fas fa-calendar-check"></i><span>Cita</span></a>
+</div>
+
+<a href="https://wa.me/593999999999?text=Hola%2C%20quiero%20mi%20diagnóstico%20gratis" class="whatsapp-float" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+
+<main>
+  <!-- Hero con imagen de fondo y degradado -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-years"><i class="fas fa-trophy"></i> +15 años de experiencia</div>
+          <h1>Diagnóstico <span>preciso</span><br>Reparación <span>garantizada</span></h1>
+          <p style="color: var(--gray-light); margin: 24px 0; font-size: 1.1rem; opacity: 0.95;">Tecnología de punta, honestidad y respaldo. Atendemos todas las marcas y modelos.</p>
+          <div class="stats-hero">
+            <div class="stat-item"><h3>15+</h3><p>Años expertos</p></div>
+            <div class="stat-item"><h3>1.2k+</h3><p>Clientes felices</p></div>
+            <div class="stat-item"><h3>100%</h3><p>Garantía escrita</p></div>
+          </div>
+          <div style="margin-top: 32px;"><a href="#contacto" class="btn-primary"><i class="fas fa-gift"></i> Diagnóstico GRATIS</a></div>
+        </div>
+        <div><div class="hero-card"><i class="fas fa-car" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 16px;"></i><h3>Tu vehículo en manos expertas</h3><p style="margin: 12px 0;">Mecánica general · Hojalatería · Pintura · Diagnóstico computarizado</p><div><i class="fas fa-star" style="color: #FFB800;"></i><i class="fas fa-star" style="color: #FFB800;"></i><i class="fas fa-star" style="color: #FFB800;"></i><i class="fas fa-star" style="color: #FFB800;"></i><i class="fas fa-star" style="color: #FFB800;"></i> 5.0 (240+ reseñas)</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" style="padding: 60px 0;">
+    <div class="container"><div class="section-title"><h2>Nuestros <span style="background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent;">Servicios</span></h2><p>Tecnología profesional para tu tranquilidad</p></div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon"><i class="fas fa-microchip"></i></div><h3>Diagnóstico Computarizado</h3><p>Escaneo avanzado, detección precisa de fallas sin especulación.</p><div style="margin-top: 14px;"><span style="background:rgba(232,93,4,0.1); padding:4px 12px; border-radius:20px;">Check Engine</span><span style="background:rgba(232,93,4,0.1); padding:4px 12px;">Sensores</span></div></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>Mecánica General</h3><p>Motor, frenos, suspensión, transmisión. Repuestos de calidad.</p><div style="margin-top: 14px;"><span>🔧 Frenos</span><span>⚙️ Motor</span><span>🔄 Suspensión</span></div></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-paint-roller"></i></div><h3>Hojalatería y Pintura</h3><p>Enderezado, pintura de alta duración, pulido profesional.</p><div><span>🔨 Enderezado</span><span>🎨 Color matching</span><span>✨ Pulido</span></div></div>
+    </div></div>
+  </section>
+
+  <!-- Carrusel de marcas sin puntos -->
+  <div class="brands-carousel-section" id="marcas">
+    <div class="container"><div class="section-title"><h2>Marcas que <span style="background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent;">reparamos</span></h2><p>Especialistas multi-marca</p></div>
+    <div class="swiper brands-swiper"><div class="swiper-wrapper">
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Chevrolet</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Peugeot</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Ford</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Toyota</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Kia</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Hyundai</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Nissan</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Renault</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Mazda</div></div></div>
+      <div class="swiper-slide"><div class="brand-slide"><div class="brand-icon"><i class="fas fa-car"></i></div><div class="brand-name">Volkswagen</div></div></div>
+    </div></div></div></div>
+
+  <div class="container"><div class="years-optimized"><i class="fas fa-calendar-alt" style="font-size: 1.8rem; color: var(--primary);"></i><h3 style="margin: 12px 0;">Cobertura total de modelos</h3><div class="years-range"><div class="year-block">1945</div><i class="fas fa-arrow-right" style="color: var(--primary);"></i><div class="year-block">2025</div></div><p style="color: var(--gray-mid);">+80 años de experiencia técnica</p><div class="year-badge-grid" id="compactYears"></div></div></div>
+
+  <!-- Testimonios sin puntos de paginación -->
+  <section id="testimonios" style="padding: 40px 0 60px;"><div class="container"><div class="section-title"><h2>Clientes que <span style="background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent;">confían</span> en nosotros</h2><p>+1200 reseñas · Calificación 5.0</p></div>
+    <div class="swiper testimonials-swiper"><div class="swiper-wrapper">
+      <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-header"><div class="avatar-letter">CM</div><div><strong>Carlos Mendoza</strong><div><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i></div></div></div><p>"Excelente diagnóstico, encontraron la falla que nadie pudo. Precio justo y garantía."</p></div></div>
+      <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-header"><div class="avatar-letter">LV</div><div><strong>Laura Vera</strong><div><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i></div></div></div><p>"Enderezado y pintura quedó como nuevo. Muy profesionales, recomendados."</p></div></div>
+      <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-header"><div class="avatar-letter">JR</div><div><strong>José Ramírez</strong><div><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i></div></div></div><p>"Confianza total, explicaron cada detalle. Cumplieron plazos y calidad excelente."</p></div></div>
+      <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-header"><div class="avatar-letter">MP</div><div><strong>Mónica Pérez</strong><div><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i><i class="fas fa-star" style="color:#FFB800;"></i></div></div></div><p>"Diagnóstico gratis muy completo, reparación impecable. Volveré siempre."</p></div></div>
+    </div></div></div></section>
+
+  <section class="contact-section" id="contacto"><div class="container"><div class="contact-grid"><div><h2 style="font-size: 1.8rem;"><span style="background: linear-gradient(135deg, var(--primary), #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent;">Diagnóstico GRATIS</span> por tiempo limitado</h2><p style="margin: 16px 0 24px;">Completa el formulario, te contactamos en menos de 24h.</p>
+    <form id="leadForm"><div class="form-group"><input type="text" id="nombre" placeholder="Nombre completo *" required></div><div class="form-group"><input type="tel" id="telefono" placeholder="Teléfono *" required></div><div class="form-group"><input type="email" id="email" placeholder="Correo electrónico *" required></div><div class="form-group"><input type="text" id="vehiculo" placeholder="Marca y modelo (Ej: Chevrolet Spark)"></div><div class="form-group"><textarea id="mensaje" rows="3" placeholder="¿Qué servicio necesita tu auto?"></textarea></div><button type="submit" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Enviar solicitud</button><div id="formFeedback" style="margin-top: 14px;"></div></form></div>
+    <div class="info-contact"><div class="info-item"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Dirección</strong><br>Calle Jose Arellano Portilla E16-116, Quito</div></div>
+    <div class="info-item"><div class="info-icon"><i class="fas fa-phone-alt"></i></div><div><strong>Teléfono</strong><br>+593 2 123 4567</div></div>
+    <div class="info-item"><div class="info-icon"><i class="fab fa-whatsapp"></i></div><div><strong>WhatsApp</strong><br>+593 99 999 9999</div></div>
+    <div class="info-item"><div class="info-icon"><i class="far fa-clock"></i></div><div><strong>Horario</strong><br>Lun-Vie: 8am-5pm | Sáb: 8:30am-1pm</div></div></div></div>
+    <div class="map-responsive"><iframe src="https://maps.google.com/maps?q=Jose+Arellano+Portilla+E16-116%2C+Quito%2C+Ecuador&z=16&output=embed" loading="lazy"></iframe></div></div></section>
+
+  <div class="container"><div class="cta-block"><h2 style="font-size: 1.8rem;">¿Necesitas reparación urgente?</h2><p style="margin: 16px 0;">Agenda tu diagnóstico sin costo</p><a href="https://wa.me/593999999999?text=Hola%2C%20quiero%20diagnóstico%20gratis" class="btn-outline" style="background: white; color: var(--primary);"><i class="fab fa-whatsapp"></i> WhatsApp directo</a></div></div>
+</main>
+
+<footer><div class="container"><div class="footer-grid"><div><h3>TOAPANTA HNOS</h3><p>Tecnología automotriz con garantía escrita.</p></div><div><h4>Servicios</h4><p>Mecánica General<br>Hojalatería y Pintura<br>Diagnóstico Computarizado</p></div><div><h4>Horario</h4><p>Lun-Vie: 8am-5pm<br>Sáb: 8:30am-1pm</p></div><div><h4>Dirección</h4><p>Calle Jose Arellano Portilla E16-116<br>Quito, Ecuador</p></div></div><div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">© 2025 Tecnología Automotriz Toapanta Hnos. Todos los derechos reservados.</div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const compactDiv = document.getElementById('compactYears');
+  if(compactDiv) [1945,1960,1980,2000,2010,2020,2025].forEach(y=>{let b=document.createElement('span');b.className='year-badge';b.textContent=y;compactDiv.appendChild(b);});
+  
+  // Carrusel marcas SIN PUNTOS y con espaciado mejorado
+  new Swiper('.brands-swiper', {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 2500, disableOnInteraction: false },
+    breakpoints: { 
+      640: { slidesPerView: 3, spaceBetween: 24 },
+      768: { slidesPerView: 4, spaceBetween: 28 },
+      1024: { slidesPerView: 5, spaceBetween: 32 }
+    },
+    pagination: false
+  });
+  
+  // Testimonios SIN PUNTOS DE PAGINACIÓN
+  new Swiper('.testimonials-swiper', {
+    loop: true,
+    autoplay: { delay: 3800, disableOnInteraction: false },
+    slidesPerView: 1,
+    spaceBetween: 24,
+    pagination: false,
+    breakpoints: { 
+      768: { slidesPerView: 2, spaceBetween: 28 },
+      1024: { slidesPerView: 3, spaceBetween: 32 }
+    }
+  });
+  
+  // Formulario
+  const form=document.getElementById('leadForm'),fb=document.getElementById('formFeedback');
+  form.addEventListener('submit',e=>{e.preventDefault();let n=document.getElementById('nombre').value.trim(),t=document.getElementById('telefono').value.trim(),em=document.getElementById('email').value.trim();if(!n||!t||!em){fb.innerHTML='<i class="fas fa-exclamation-circle"></i> Completa campos obligatorios.';fb.style.color='#E85D04';setTimeout(()=>fb.innerHTML='',3000);return;}
+  let v=document.getElementById('vehiculo').value,m=document.getElementById('mensaje').value;window.location.href=`mailto:wiliampuntomorales@gmail.com?subject=Diagnóstico%20GRATIS%20-%20${encodeURIComponent(n)}&body=${encodeURIComponent(`📌 SOLICITUD DIAGNÓSTICO GRATIS\n\n👤 Nombre: ${n}\n📞 Teléfono: ${t}\n📧 Email: ${em}\n🚗 Vehículo: ${v||'No especificado'}\n\n💬 Mensaje: ${m||'Sin detalles'}\n\nFecha: ${new Date().toLocaleString('es-EC')}`)}`;fb.innerHTML='<i class="fas fa-check-circle"></i> Solicitud lista. Se abrirá tu correo.';fb.style.color='#4CAF50';form.reset();setTimeout(()=>fb.innerHTML='',5000);});
+  
+  // Animaciones
+  const fadeEls=document.querySelectorAll('.service-card, .brands-carousel-section, .years-optimized, .contact-grid');
+  const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}})},{threshold:0.1});
+  fadeEls.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='all 0.6s ease';obs.observe(el);});
+</script>
+</body>
+</html>
